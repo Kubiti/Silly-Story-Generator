@@ -12,14 +12,14 @@ function randomValueFromArray(array){
 
 // 2. RAW TEXT STRINGS
 
-// 2a. Story string using template literals */
+/*/ 2a. Story string using template literals 
 let storyText = `It was 94 fahrenheit outside, so :insertx: went for a walk. When they got to :inserty:, they stared in horror for a few moments, then :insertz:. Bob saw the whole thing, but was not surprised — :insertx: weighs 300 pounds, and it was a hot day.`,
+*/
 
 
 
-
-// let storyText = `It was 94 fahrenheit outside, so :insertx: went for a walk. When they got to :inserty:, they stared in horror for a few moments, then :insertz:. Bob saw the whole thing, but was not surprised — :insertx: weighs 300 pounds, and it was a hot day.
-//`, 
+let storyText = `It was 94 fahrenheit outside, so :insertx: went for a walk. When they got to :inserty:, they stared in horror for a few moments, then :insertz:. Bob saw the whole thing, but was not surprised — :insertx: weighs 300 pounds, and it was a hot day.
+`, 
 insertX = ['Willy the Goblin', 'Big Daddy', 'Father Christmas'],
 insertY = ['the soup kitchen', 'Disneyland', 'the White House'],
 insertZ = ['spontaneously combusted', 'melted into a puddle on the sidewalk', 'turned into a slug and crawled away'];
@@ -30,26 +30,32 @@ insertZ = ['spontaneously combusted', 'melted into a puddle on the sidewalk', 't
 randomize.addEventListener('click', result);
 
 function result() {
-
-  if(customName.value !== '') {
-    let name = customName.value;
-
-  }
-
-  if(document.getElementById("uk").checked) {
-    let weight = Math.round(300);
-    let temperature =  Math.round(94);
-
-  }
-
+  
   let newStory = storyText, 
   xItem = randomValueFromArray(insertX),
   yItem = randomValueFromArray(insertY),
   zItem = randomValueFromArray(insertZ);
 
-  // story.textContent = ;
+  newStory = newStory.replace(/:insertx:/gi, xItem);
+  newStory = newStory.replace(/:inserty:/gi, yItem);
+  newStory = newStory.replace(/:insertz:/gi, zItem);
+
+  if(customName.value !== '') {
+    let name = customName.value;
+    newStory = newStory.replace(/Bob/gi, name);
+  }
+
+  if(document.getElementById("uk").checked) {
+    let weight = Math.round(300 / 14) + ' stone';
+    let temperature =  Math.round((94 - 32) * 5/9) + ' centigrade';
+    newStory = newStory.replace('300 pounds', weight);
+    newStory = newStory.replace('94 fahrenheit', temperature);
+
+  }
+
+  story.textContent = newStory;
   story.style.visibility = 'visible';
-  console.log(xItem, yItem, zItem);
+  console.log(newStory);
 }
 
 
