@@ -9,7 +9,7 @@ function randomValueFromArray(array){
   return array[random];
 }
 
-let storyText = `It was 94 fahrenheit outside, so :insertx: went for a walk. When they got to :inserty:, they stared in horror for a few moments, then :insertz:. Bob saw the whole thing, but was not surprised — :insertx: weighs 300 pounds, and it was a hot day.
+let storyText = `It was <em>94 fahrenheit</em> outside, so :insertx: went for a walk. When they got to :inserty:, they stared in horror for a few moments, then :insertz:. <strong>Bob</strong> saw the whole thing, but was not surprised — :insertx: weighs <em>300 pounds</em>, and it was a hot day.
 `, 
 insertX = ['Willy the Goblin', 'Big Daddy', 'Father Christmas'],
 insertY = ['the soup kitchen', 'Disneyland', 'the White House'],
@@ -44,19 +44,9 @@ function result() {
 
   }
 
-  story.textContent = newStory;
+  story.innerHTML = newStory;
   story.style.visibility = 'visible';
-  console.log(newStory);
 }
 
 
 
-
-
-
-
-
-
-
-
-console.log(insertX[0], insertY[1], insertZ[2]);
